@@ -31,7 +31,7 @@ app.post('/login', async(req, resp)=>{
       }
 
   } else {
-      resp.send({ email: "Record is missing" })
+      resp.send({ result: "Record is missing" })
   }
 
 })
