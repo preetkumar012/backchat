@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
+const dotenv=require("dotenv");
 
 require('./db/config.js');
 const Product=require('./db/Product.js');
@@ -9,6 +10,10 @@ const app = express();
 const users=[{}];
 app.use(cors());
 app.use(express.json());
+dotenv.config({path:'./.env'})
+
+const port=process.env.port || 4500;
+
 
 // ..............user register API start..........?
 app.post("/register", async (req, resp)=>{
@@ -43,7 +48,7 @@ app.get("/", (req, resp) => {
   resp.send("<h1>app is working here</h1>");
 });
 
-const port = 4500 || process.env.PORT;
+
 
 const server = http.createServer(app);
 
